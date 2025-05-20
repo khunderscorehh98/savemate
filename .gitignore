@@ -1,0 +1,58 @@
+# === Node.js Backend (api/) ===
+api/node_modules/
+api/.env
+api/package-lock.json
+api/coverage/
+api/logs/
+api/*.log
+
+# === Python Analytics Service (savemate_analytics/) ===
+savemate_analytics/__pycache__/
+savemate_analytics/app/__pycache__/
+savemate_analytics/env/
+savemate_analytics/venv/
+savemate_analytics/.env
+savemate_analytics/*.pyc
+savemate_analytics/*.pyo
+savemate_analytics/*.pyd
+savemate_analytics/*.egg-info/
+savemate_analytics/.pytest_cache/
+savemate_analytics/.mypy_cache/
+
+# === Vue Web Frontend (app/savemate_webapp/) ===
+app/savemate_webapp/node_modules/
+app/savemate_webapp/dist/
+app/savemate_webapp/.env
+app/savemate_webapp/.env.*.local
+
+# === Flutter App (app/savemate_app/) ===
+app/savemate_app/.dart_tool/
+app/savemate_app/.idea/
+app/savemate_app/.vscode/
+app/savemate_app/.packages
+app/savemate_app/build/
+app/savemate_app/ios/Flutter/Flutter.framework
+app/savemate_app/ios/Flutter/Flutter.podspec
+app/savemate_app/pubspec.lock
+app/savemate_app/ios/Runner.xcworkspace/
+app/savemate_app/ios/Pods/
+app/savemate_app/ios/.symlinks/
+app/savemate_app/ios/Flutter/ephemeral/
+app/savemate_app/macos/Flutter/ephemeral/
+app/savemate_app/.flutter-plugins
+app/savemate_app/.flutter-plugins-dependencies
+app/savemate_app/.metadata
+app/savemate_app/.packages
+
+# === Common OS/IDE files ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+.vscode/
+.idea/
+
+# === Optional: Root-level .env files ===
+.env
