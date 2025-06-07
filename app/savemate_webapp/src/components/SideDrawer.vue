@@ -21,7 +21,6 @@
         <v-list-item-title>Subscriptions</v-list-item-title>
       </v-list-item>
   
-      <!-- Premium-only features -->
       <v-divider class="my-2" v-if="isPremium" />
       <v-subheader v-if="isPremium">Premium Tools</v-subheader>
       <v-list-item v-if="isPremium" link :to="{ name: 'Analytics' }">
