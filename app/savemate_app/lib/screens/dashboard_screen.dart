@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:savemate_app/screens/add_data_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String userName;
@@ -89,9 +90,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              // TODO: Implement navigation to Add Data page
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Navigate to add data form')),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const AddDataScreen(),
+                ),
               );
             },
           ),
