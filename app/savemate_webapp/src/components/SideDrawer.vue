@@ -64,10 +64,7 @@
     name: 'SideDrawer',
     computed: {
       isPremium() {
-        // TODO: Replace with actual check, e.g., from Vuex store or auth module
         const user = JSON.parse(localStorage.getItem('user'));
-        console.log('User:', user); // Debug
-        console.log('Is Premium:', user?.is_premium); // Debug
         return user?.is_premium === true;
       }
     }

@@ -1,7 +1,6 @@
 // src/router/index.js
 import Vue from 'vue'
 import Router from 'vue-router'
-import { component } from 'vue/types/umd'
 
 // Views (lazy-loaded)
 const routes = [

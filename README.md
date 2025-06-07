@@ -64,14 +64,19 @@ cp .env.example .env
 npm start
 ```
 
-### 3. Start the Frontend
+### 3. Start the Vue.js Frontend
 ```bash
-cd ../app
+cd ../app/savemate_webapp
 npm install
 npm run serve
 ```
 
-### 4. Start the Python Analytics API
+### 4. Start the Flutter Mobile App (optional)
+```bash
+cd ../app/savemate_app
+flutter run
+```
+### 5. Start the Python Analytics API
 ```bash
 cd ../savemate_analytics
 python3 -m venv venv
