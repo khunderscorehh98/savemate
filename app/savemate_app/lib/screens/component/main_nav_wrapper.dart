@@ -7,7 +7,12 @@ import '../subscriptions_screen.dart';
 
 class MainNavWrapper extends StatefulWidget {
   final String userName;
-  const MainNavWrapper({super.key, required this.userName});
+  final String userId;
+  const MainNavWrapper({
+    super.key,
+    required this.userName,
+    required this.userId,
+  });
 
   @override
   State<MainNavWrapper> createState() => _MainNavWrapperState();
@@ -21,7 +26,10 @@ class _MainNavWrapperState extends State<MainNavWrapper> {
   void initState() {
     super.initState();
     _screens = [
-      DashboardScreen(userName: widget.userName),
+      DashboardScreen(
+        userName: widget.userName,
+        userId: widget.userId,
+      ),
       TransactionsScreen(),
       BudgetsScreen(),
       GoalsScreen(),

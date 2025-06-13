@@ -1,9 +1,6 @@
-// src/router/index.js
 import Vue from 'vue'
 import Router from 'vue-router'
-import { component } from 'vue/types/umd'
 
-// Views (lazy-loaded)
 const routes = [
   { path: '/', redirect: '/home' },
   { path: '/home', name: 'Home', component: () => import('@/views/HomeView.vue') },
@@ -25,7 +22,6 @@ const routes = [
   { path: '/profile', name: 'Profile', component: () => import('@/views/Profile.vue'), meta: { requiresAuth: true } },
   { path: '/about', name: 'About', component: () => import('@/views/AboutView.vue') },
   
-  // Premium Pages
   { path: '/advance-analytics', name: 'Analytics', component: () => import('@/views/Analytics.vue') },
   { path: '/spend-insights', name: 'SpendingInsights', component: () => import('@/views/SpendInsights.vue') },
   { path: '/financial-forecast', name: 'FinancialForecast', component: () => import('@/views/FinancialForecast.vue') },
@@ -44,14 +40,12 @@ const router = new Router({
   routes
 })
 
-// Navigation guard
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
   let isAuthenticated = false;
 
   if (token && token !== 'null' && token !== 'undefined') {
     try {
-      // Parse JWT and check expiration
       const payload = JSON.parse(atob(token.split('.')[1] || ''));
       const exp = payload?.exp;
       const now = Math.floor(Date.now() / 1000);
@@ -59,7 +53,6 @@ router.beforeEach((to, from, next) => {
         isAuthenticated = true;
       }
     } catch (e) {
-      // Invalid token
       isAuthenticated = false;
     }
   }

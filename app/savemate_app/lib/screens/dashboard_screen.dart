@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:savemate_app/screens/add_data_screen.dart';
+import 'package:savemate_app/screens/login_screen.dart';
+import 'package:savemate_app/utils/secure_storage.dart';
+import 'package:savemate_app/utils/constants.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String userName;
@@ -30,17 +34,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
     setState(() => isLoading = true);
     try {
       final expensesRes = await http.get(
-        Uri.parse(
-          'http://192.168.68.105:5003/api/expenses/user/${widget.userId}',
-        ),
+        Uri.parse('$apiBaseUrl/api/expenses/user/${widget.userId}'),
       );
       final budgetsRes = await http.get(
-        Uri.parse(
-          'http://192.168.68.105:5003/api/budgets/user/${widget.userId}',
-        ),
+        Uri.parse('$apiBaseUrl/api/budgets/user/${widget.userId}'),
       );
       final goalsRes = await http.get(
-        Uri.parse('http://192.168.68.105:5003/api/goals/user/${widget.userId}'),
+        Uri.parse('$apiBaseUrl/api/goals/user/${widget.userId}'),
       );
 
       final expenses = jsonDecode(expensesRes.body);
@@ -89,9 +89,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              // TODO: Implement navigation to Add Data page
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Navigate to add data form')),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const AddDataScreen(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await SecureStorage.clearToken();
+              if (!mounted) return;
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => LoginScreen()),
+                (route) => false,
               );
             },
           ),

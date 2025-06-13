@@ -1,5 +1,9 @@
 <template>
     <v-list dense>
+      <v-list-item>
+        <v-list-item-title>Hi {{ userName }}</v-list-item-title>
+      </v-list-item>
+      <v-divider class="my-2" />
       <v-list-item link :to="{ name: 'Dashboard' }">
         <v-list-item-icon><v-icon>mdi-view-dashboard</v-icon></v-list-item-icon>
         <v-list-item-title>Dashboard</v-list-item-title>
@@ -21,7 +25,6 @@
         <v-list-item-title>Subscriptions</v-list-item-title>
       </v-list-item>
   
-      <!-- Premium-only features -->
       <v-divider class="my-2" v-if="isPremium" />
       <v-subheader v-if="isPremium">Premium Tools</v-subheader>
       <v-list-item v-if="isPremium" link :to="{ name: 'Analytics' }">
@@ -64,11 +67,12 @@
     name: 'SideDrawer',
     computed: {
       isPremium() {
-        // TODO: Replace with actual check, e.g., from Vuex store or auth module
         const user = JSON.parse(localStorage.getItem('user'));
-        console.log('User:', user); // Debug
-        console.log('Is Premium:', user?.is_premium); // Debug
         return user?.is_premium === true;
+      },
+      userName() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        return user?.name || 'user';
       }
     }
   };
