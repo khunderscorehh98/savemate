@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'package:http/http.dart' as http;
+import 'utils/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +11,7 @@ void main() async {
 
 Future<void> testConnection() async {
   try {
-    final res = await http.get(Uri.parse('http://192.168.68.105:5003/'));
+    final res = await http.get(Uri.parse('$apiBaseUrl/'));
     print('✅ API says: \${res.statusCode} - \${res.body}');
   } catch (e) {
     print('❌ Error connecting to API: \$e');

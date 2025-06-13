@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:savemate_app/screens/register_screen.dart';
-import 'package:savemate_app/screens/dashboard_screen.dart';
+import 'package:savemate_app/screens/component/main_nav_wrapper.dart';
 import 'package:savemate_app/services/auth_service.dart';
 import 'package:savemate_app/utils/secure_storage.dart';
 
@@ -29,11 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder:
-              (_) => DashboardScreen(
-                userName: res['body']['user']['name'],
-                userId: res['body']['user']['id'], // <-- ADD THIS
-              ),
+          builder: (_) => MainNavWrapper(
+            userName: res['body']['user']['name'],
+            userId: res['body']['user']['id'],
+          ),
         ),
       );
     } else {
