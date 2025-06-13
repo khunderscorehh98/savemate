@@ -1,5 +1,9 @@
 <template>
     <v-list dense>
+      <v-list-item>
+        <v-list-item-title>Hi {{ userName }}</v-list-item-title>
+      </v-list-item>
+      <v-divider class="my-2" />
       <v-list-item link :to="{ name: 'Dashboard' }">
         <v-list-item-icon><v-icon>mdi-view-dashboard</v-icon></v-list-item-icon>
         <v-list-item-title>Dashboard</v-list-item-title>
@@ -65,6 +69,10 @@
       isPremium() {
         const user = JSON.parse(localStorage.getItem('user'));
         return user?.is_premium === true;
+      },
+      userName() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        return user?.name || 'user';
       }
     }
   };
