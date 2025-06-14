@@ -5,7 +5,8 @@
   "scripts": {
     "test": "node tests/basic.test.js",
     "start": "node server.js",
-    "dev": "clear; nodemon server.js"
+    "dev": "clear; nodemon server.js",
+    "seed": "node sampleData.js"
   },
   "keywords": [],
   "author": "",

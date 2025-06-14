@@ -61,6 +61,7 @@ cd api
 npm install
 cp .env.example .env
 # Fill in MONGODB_URI and JWT_SECRET
+npm run seed   # optional: load sample data
 npm start
 ```
 
